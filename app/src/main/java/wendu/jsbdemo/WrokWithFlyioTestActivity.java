@@ -9,14 +9,17 @@ import org.json.JSONObject;
 
 import wendu.dsbridge.CompletionHandler;
 import wendu.dsbridge.DWebView;
+import wendu.jsbdemo.databinding.ActivityWrokWithFlyioTestBinding;
 
 public class WrokWithFlyioTestActivity extends AppCompatActivity {
+    private ActivityWrokWithFlyioTestBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wrok_with_flyio_test);
-        DWebView dWebView= (DWebView) findViewById(R.id.webview);
+        binding = ActivityWrokWithFlyioTestBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        DWebView dWebView= binding.webview;
         dWebView.addJavascriptObject(new Object(){
 
             /**

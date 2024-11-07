@@ -212,10 +212,8 @@ public class DWebView extends WebView {
 
     @Deprecated
     public interface FileChooser {
-        @TargetApi(Build.VERSION_CODES.HONEYCOMB)
         void openFileChooser(ValueCallback valueCallback, String acceptType);
 
-        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         void openFileChooser(ValueCallback<Uri> valueCallback,
                              String acceptType, String capture);
     }
@@ -892,7 +890,6 @@ public class DWebView extends WebView {
 
 
         @Keep
-        @TargetApi(Build.VERSION_CODES.HONEYCOMB)
         public void openFileChooser(ValueCallback valueCallback, String acceptType) {
             if (webChromeClient instanceof FileChooser) {
                 ((FileChooser) webChromeClient).openFileChooser(valueCallback, acceptType);
@@ -901,7 +898,6 @@ public class DWebView extends WebView {
 
 
         @Keep
-        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public void openFileChooser(ValueCallback<Uri> valueCallback,
                                     String acceptType, String capture) {
             if (webChromeClient instanceof FileChooser) {

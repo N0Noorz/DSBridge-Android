@@ -10,35 +10,32 @@ import org.json.JSONObject;
 
 import wendu.dsbridge.DWebView;
 import wendu.dsbridge.OnReturnValue;
+import wendu.jsbdemo.databinding.ActivityCallJavascriptBinding;
 
 public class CallJavascriptActivity extends AppCompatActivity implements View.OnClickListener {
+    private ActivityCallJavascriptBinding binding;
 
     DWebView dWebView;
-
-    public <T extends View> T getView(int viewId) {
-        View view = findViewById(viewId);
-        return (T) view;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_call_javascript);
-        getView(R.id.addValue).setOnClickListener(this);
-        getView(R.id.append).setOnClickListener(this);
-        getView(R.id.startTimer).setOnClickListener(this);
-        getView(R.id.synAddValue).setOnClickListener(this);
-        getView(R.id.synGetInfo).setOnClickListener(this);
-        getView(R.id.asynAddValue).setOnClickListener(this);
-        getView(R.id.asynGetInfo).setOnClickListener(this);
-        getView(R.id.hasMethodAddValue).setOnClickListener(this);
-        getView(R.id.hasMethodXX).setOnClickListener(this);
-        getView(R.id.hasMethodAsynAddValue).setOnClickListener(this);
-        getView(R.id.hasMethodAsynXX).setOnClickListener(this);
+        binding = ActivityCallJavascriptBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.addValue.setOnClickListener(this);
+        binding.append.setOnClickListener(this);
+        binding.startTimer.setOnClickListener(this);
+        binding.synAddValue.setOnClickListener(this);
+        binding.synGetInfo.setOnClickListener(this);
+        binding.asynAddValue.setOnClickListener(this);
+        binding.asynGetInfo.setOnClickListener(this);
+        binding.hasMethodAddValue.setOnClickListener(this);
+        binding.hasMethodXX.setOnClickListener(this);
+        binding.hasMethodAsynAddValue.setOnClickListener(this);
+        binding.hasMethodAsynXX.setOnClickListener(this);
         DWebView.setWebContentsDebuggingEnabled(true);
-        dWebView= getView(R.id.webview);
+        dWebView = binding.webview;
         dWebView.loadUrl("file:///android_asset/native-call-js.html");
-
 
 
     }
